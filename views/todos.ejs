@@ -1,0 +1,17 @@
+<%- include ('partials/header') %>
+<div>
+  <a class="btn btn-primary" href="/add">Add Todo</a>
+</div>
+<div class="row text-center" style="display: flex; flex-wrap: wrap;">
+    <% todolist.forEach(function(todo){ %>
+      <div class="card mb-3" >
+        <div class="row no-gutters">
+          <h5 class="card-title"><%= todo.title %></h5>
+          <a class="btn btn-primary" href="/done/<%=todo.id%>">Done</a>
+          <a class="btn btn-primary" href="/delete/<%=todo.id%>">Delete</a>
+        </div>
+      </div>
+    <% }); %>
+</div>
+
+<%- include ('partials/footer') %>

@@ -31,7 +31,7 @@ app.get("/",function(req,res){
 });
 
 app.get("/todos",function(req,res){
-	User.findById(req.user.id,function(err,foundUser){
+	User.findById(req.user.id).populate("todolist").exec(function(err,foundUser){
 		if(err){
 			console.log(err);
 		}else{

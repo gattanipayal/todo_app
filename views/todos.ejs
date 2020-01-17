@@ -6,17 +6,19 @@
     <% todolist.forEach(function(todo){ %>
       <div style="padding:5px;" class="card text-center" >
         <div class="row no-gutters text-center">
-          <h5 class="card-title"><%= todo.title %></h5>
+          <% if(todo.completed==true){ %>
+            <h5 style="text-decoration: line-through;" class="card-title"><%= todo.title %></h5>
+          <% }else{ %>
+            <h5 style="text-decoration: line-through;" class="card-title"><%= todo.title %></h5>
+          <% }%>
           <a class="btn btn-primary" href="/done/<%=todo.id%>">Done</a>
           <a class="btn btn-primary" href="/delete/<%=todo.id%>">Delete</a>
-      
-      <%if(todo.due_date.getDate()==(new Date()).getDate()){%>
-        <div style="color:red;font-weight:bold;"><%=todo.title%> has its deadline today</div>
-      <%}%>
+          <%if(todo.due_date.getDate()==(new Date()).getDate()){%>
+            <div style="color:red;font-weight:bold;"><%=todo.title%> has its deadline today</div>
+          <%}%>
         </div>
-      
+      </div>
     <% }); %>
-    </div>
 </div>
 
 <%- include ('partials/footer') %>
